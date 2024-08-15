@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Gestión de Libros</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>TrackBook</h1>
+      <form th:action="@{/search}" method="get" class="form-inline">
+        <input
+          type="text"
+          name="keyword"
+          placeholder="Buscar por título o autor"
+        />
+        <button type="submit">Buscar</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>ISBN</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="book : ${listBooks}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.price}"></td>
+            <td>
+              <a
+                th:href="@{/showFormForUpdate/{id}(id=${book.id})}"
+                class="btn-edit"
+                >Editar</a
+              >
+              <a th:href="@{/deleteBook/{id}(id=${book.id})}" class="btn-delete"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/showNewBookForm" class="btn-add-book">Agregar Nuevo Libro</a>
+    </div>
+  </body>
+</html>

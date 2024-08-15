@@ -1,0 +1,5 @@
+librotrack\com\portfolio\repository\BookRepository.class
+librotrack\com\portfolio\controller\BookController.class
+librotrack\com\portfolio\service\BookService.class
+librotrack\com\portfolio\model\Book.class
+librotrack\com\portfolio\PortfolioApplication.class
